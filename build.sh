@@ -188,7 +188,9 @@ setversioning() {
 exports() {
 	export KBUILD_BUILD_USER="pingmado"
 	export ARCH=arm64
-	export SUBARCH=arm64
+	export CROSS_COMPILE=$GCC64_DIR
+	export ANDROID_MAJOR_VERSION=q
+	export ANDROID_PLATFORM_VERSION=10
 
 	if [ $COMPILER = "clang" ]
 	then

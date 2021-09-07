@@ -188,8 +188,9 @@ setversioning() {
 exports() {
 	export KBUILD_BUILD_USER="pingmado"
 	export ARCH=arm64
-	# export CROSS_COMPILE=$GCC64_DIR
-	# export ANDROID_MAJOR_VERSION=q
+	# export SUBARCH=arm64
+        # export CROSS_COMPILE=$GCC64_DIR
+	export ANDROID_MAJOR_VERSION=q
 	# export ANDROID_PLATFORM_VERSION=10
 
 	if [ $COMPILER = "clang" ]
@@ -350,10 +351,11 @@ build_kernel() {
 	elif [ $COMPILER = "gcc" ]
 	then
 		make -j"$PROCS" O=out \
+				CROSS_COMPILE_ARM32=arm-eabi- \
 				CROSS_COMPILE=aarch64-elf- \
-				ANDROID_MAJOR_VERSION=p \
-				ANDROID_PLATFORM_VERSION=10 \
-				exynos7870-j7xelte_defconfig
+				AR=aarch64-elf-ar \
+				OBJDUMP=aarch64-elf-objdump \
+				STRIP=aarch64-elf-strip
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then

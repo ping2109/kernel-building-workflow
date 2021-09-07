@@ -348,11 +348,10 @@ build_kernel() {
 	elif [ $COMPILER = "gcc" ]
 	then
 		make -j"$PROCS" O=out \
-				CROSS_COMPILE_ARM32=arm-eabi- \
 				CROSS_COMPILE=aarch64-elf- \
-				AR=aarch64-elf-ar \
-				OBJDUMP=aarch64-elf-objdump \
-				STRIP=aarch64-elf-strip
+				ANDROID_MAJOR_VERSION=p \
+				ANDROID_PLATFORM_VERSION=10 \
+				exynos7870-j7xelte_defconfig
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then

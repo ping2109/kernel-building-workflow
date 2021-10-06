@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b 11 kernel
+git clone https://github.com/mi-msm8937/android_kernel_xiaomi_msm8937 -b 11 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -197,10 +197,10 @@ setversioning() {
 ##--------------------------------------------------------------##
 
 exports() {
-	# export KBUILD_BUILD_USER="ping2109"
-	# export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
-	export KBUILD_USERNAME="ping2109"
-	export KBUILD_HOST="pings-FreeFire-GamingPC"
+	export KBUILD_BUILD_USER="ping2109"
+	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
+	# export KBUILD_USERNAME="ping2109"
+	# export KBUILD_HOST="pings-FreeFire-GamingPC"
 	export ARCH=arm64
 	export SUBARCH=arm64
 

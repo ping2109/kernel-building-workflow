@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/mi-msm8937/android_kernel_xiaomi_msm8937 -b a11 kernel
+git clone https://github.com/ping2109/NevaKernel-7870 -b pure10 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -42,17 +42,17 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 4A/5A"
+MODEL="Galaxy J7 2016"
 
 # The codename of the device
-DEVICE="rova"
+DEVICE="j7xelte"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=mi8937_defconfig
+DEFCONFIG=exynos7870-j7xelte_defconfig
 
 #Kernel version
-KERN_VER="1.0"
+KERN_VER="3.0"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
@@ -61,13 +61,13 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Initial build"
 
 #TG Post credits
-CREDITS="@me_cafebabe, @ping2109official"
+CREDITS="@Astrako, @ping2109official"
 
 # Kernel Variant
-VARIANT=mi8937
+VARIANT=j7xelte
 
 # Build Type
-BUILD_TYPE="Release"
+BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
@@ -136,7 +136,7 @@ LINUXVER=$(make kernelversion)
 COMMIT_HEAD=$(git log --oneline -1)
 
 # Set Date
-DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
+DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 
 #Now Its time for other stuffs like cloning, exporting, etc
 
@@ -174,7 +174,7 @@ DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b rova $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b 7870 $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then
@@ -412,7 +412,7 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>Neva-$KERN_VER-$DEVICE</code>
+<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 

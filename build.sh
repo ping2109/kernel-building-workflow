@@ -337,9 +337,6 @@ build_kernel() {
 
 	fi
 
-        export KBUILD_BUILD_USER="ping2109"
-	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
-
 	if [ $SILENCE = "1" ]
 	then
 		MAKE+=( -s )

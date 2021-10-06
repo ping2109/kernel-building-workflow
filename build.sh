@@ -57,6 +57,12 @@ KERN_VER="1.0"
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
+#TG Post description and notes
+POST_DESC=Initial build
+
+#TG Post credits
+CREDITS=@me_cafebabe, @ping2109official
+
 # Kernel Variant
 VARIANT=mi8937
 
@@ -286,14 +292,19 @@ tg_send_files(){
 	MD5CHECK=$(md5sum "$KernelFiles" | cut -d' ' -f1)
 	SID="CAACAgUAAxkBAAIlv2DEzB-BSFWNyXkkz1NNNOp_pm2nAAIaAgACXGo4VcNVF3RY1YS8HwQ"
 	STICK="CAACAgUAAxkBAAIlwGDEzB_igWdjj3WLj1IPro2ONbYUAAIrAgACHcUZVo23oC09VtdaHwQ"
-    MSG="✅ <b>Build Done</b>
-- <code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s) </code>
-<b>Build Type</b>
--<code>$BUILD_TYPE</code>
-<b>MD5 Checksum</b>
-- <code>$MD5CHECK</code>
-<b>Zip Name</b>
-- <code>$KERNELNAME.zip</code>"
+    MSG="✅ <b>Build done</b>
+- <b>Took:</b> <code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s) </code>
+- <b>Build type:</b> <code>$BUILD_TYPE</code>
+- <b>MD5 checksum:</b> <code>$MD5CHECK</code>
+- <b>Zip name:</b> <code>$KERNELNAME.zip</code>
+
+- <b>Name: </b><code>NevaKernel Mi $KERN_VER</code>
+- <b>Device: </b><code>$MODEL</code>
+- <b>Codename: </b><code>$DEVICE</code>
+- <b>Build date: </b><code>$DATE</code>
+- <b>SELinux version: </b><code>$LINUXVER</code>
+- <b>Description: </b><code>$POST_DESC</code>
+- <b>Credits: </b><code>$CREDITS</code>"
 
         curl --progress-bar -F document=@"$KernelFiles" "https://api.telegram.org/bot$TOKEN/sendDocument" \
         -F chat_id="$CHATID"  \

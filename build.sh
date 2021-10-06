@@ -136,7 +136,7 @@ LINUXVER=$(make kernelversion)
 COMMIT_HEAD=$(git log --oneline -1)
 
 # Set Date
-DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
+DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 
 #Now Its time for other stuffs like cloning, exporting, etc
 
@@ -412,7 +412,7 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>Neva-$KERN_VER-$DEVICE</code>
+<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 

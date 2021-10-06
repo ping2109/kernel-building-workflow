@@ -415,10 +415,10 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=Redux-CAF-STABLE/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi 1.0/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
-	sed -i "s/kernel.compiler=.*/kernel.compiler=proton-clang/g" anykernel.sh
-	sed -i "s/kernel.made=.*/kernel.made=Bounty Hunter/g" anykernel.sh
+	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
+	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh
 	sed -i "s/kernel.version=.*/kernel.version=$LINUXVER/g" anykernel.sh
 	sed -i "s/build.date=.*/build.date=$DATE/g" anykernel.sh
 

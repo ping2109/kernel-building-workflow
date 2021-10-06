@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b a11 kernel
+git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b neva kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##

@@ -204,6 +204,7 @@ exports() {
 	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
 	# export KBUILD_USERNAME="ping2109"
 	# export KBUILD_HOST="pings-FreeFire-GamingPC"
+	export CONFIG_LOCALVERSION=$SHOWN_NAME
 	export ARCH=arm64
 	export SUBARCH=arm64
 

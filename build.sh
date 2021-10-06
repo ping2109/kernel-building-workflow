@@ -200,7 +200,9 @@ exports() {
 	# export KBUILD_USERNAME="ping2109"
 	# export KBUILD_HOST="pings-FreeFire-GamingPC"
 	export ARCH=arm64
-	export SUBARCH=arm64
+	# export SUBARCH=arm64
+	export ANDROID_MAJOR_VERSION=q
+	export ANDROID_PLATFORM_VERSION=10
 
 	if [ $COMPILER = "clang" ]
 	then

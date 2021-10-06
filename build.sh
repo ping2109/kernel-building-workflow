@@ -24,7 +24,7 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
  curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 \
  libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make \
  optipng bc libstdc++6 libncurses5 wget python3 python3-pip python gcc clang  \
- libssl-dev rsync flex git-lfs libz3-dev libz3-4 axel tar gcc llvm lld g++-multilib clang default-jre libxml2 ccache
+ libssl-dev rsync flex git-lfs libz3-dev libz3-4 axel tar gcc llvm lld g++-multilib clang default-jre libxml2
 
 }
 
@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/samsungexynos7870/android_kernel_samsung_exynos7870 -b simple_q_permissive kernel
+git clone https://github.com/divyam234/android_kernel_asus_sdm660 -b eleven kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -42,27 +42,27 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Galaxy J7 2016"
+MODEL="Asus Zenfone Max Pro M2"
 
 # The codename of the device
-DEVICE="j7xelte"
+DEVICE="X01BD"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=exynos7870-j7xelte_defconfig
+DEFCONFIG=X01BD_defconfig
 
 # Show manufacturer info
-MANUFACTURERINFO="samsung"
+MANUFACTURERINFO="ASUSTek Computer Inc."
 
 # Kernel Variant
-VARIANT=
+VARIANT=perf
 
 # Build Type
-BUILD_TYPE="Nightly"
+BUILD_TYPE="Release"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
-COMPILER=gcc
+COMPILER=clang
 
 # Kernel is LTO
 LTO=0
@@ -125,7 +125,7 @@ LINUXVER=$(make kernelversion)
 COMMIT_HEAD=$(git log --oneline -1)
 
 # Set Date
-DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
+DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 
 #Now Its time for other stuffs like cloning, exporting, etc
 
@@ -177,7 +177,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="pingmado-$LINUXVER-$VARIANT-j7xelte-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="Redux-$LINUXVER-$VARIANT-X01BD-$(TZ=Asia/Kolkata date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -186,12 +186,9 @@ setversioning() {
 ##--------------------------------------------------------------##
 
 exports() {
-	export KBUILD_BUILD_USER="pingmado"
+	export KBUILD_BUILD_USER="Redux"
 	export ARCH=arm64
-	# export SUBARCH=arm64
-        export CROSS_COMPILE=$GCC64_DIR/bin/aarch64-elf-
-	export ANDROID_MAJOR_VERSION=q
-	# export ANDROID_PLATFORM_VERSION=10
+	export SUBARCH=arm64
 
 	if [ $COMPILER = "clang" ]
 	then
@@ -311,12 +308,12 @@ build_kernel() {
 
 	if [ "$PTTG" = 1 ]
  	then
-            tg_post_msg "<b>🔨 pingmado Kernel Build Triggered</b>
+            tg_post_msg "<b>🔨 Redux Kernel Build Triggered</b>
 <b>Host Core Count : </b><code>$PROCS</code>
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>pingmado-$VARIANT-$DEVICE</code>
+<b>Kernel Name: </b><code>Redux-$VARIANT-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>"
 
 	fi
@@ -396,7 +393,7 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>pingmado-$VARIANT-$DEVICE</code>
+<b>Kernel Name: </b><code>Redux-$VARIANT-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 
@@ -418,7 +415,7 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=pingmado-idk-Nightly/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=Redux-CAF-STABLE/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
 	sed -i "s/kernel.compiler=.*/kernel.compiler=proton-clang/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=Bounty Hunter/g" anykernel.sh

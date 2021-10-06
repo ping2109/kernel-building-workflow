@@ -359,11 +359,11 @@ build_kernel() {
 
 	elif [ $COMPILER = "gcc" ]
 	then
-		make -j"$PROCS" O=out \
-				CROSS_COMPILE=aarch64-none-linux-gnu- \
-				AR=aarch64-none-linux-gnu-ar \
-				OBJDUMP=aarch64-none-linux-gnu-objdump \
-				STRIP=aarch64-none-linux-gnu-strip
+		make # -j"$PROCS" O=out \
+				# CROSS_COMPILE=aarch64-none-linux-gnu- \
+				# AR=aarch64-none-linux-gnu-ar \
+				# OBJDUMP=aarch64-none-linux-gnu-objdump \
+				# STRIP=aarch64-none-linux-gnu-strip
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then

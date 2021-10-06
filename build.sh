@@ -192,6 +192,7 @@ setversioning() {
 
 exports() {
 	export KBUILD_BUILD_USER="ping2109"
+	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
 	export ARCH=arm64
 	export SUBARCH=arm64
 

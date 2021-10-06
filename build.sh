@@ -54,9 +54,6 @@ DEFCONFIG=mi8937_defconfig
 #Kernel version
 KERN_VER="1.1"
 
-#Custom Local Version
-SHOWN_NAME=" - NevaKernel Mi 1.1 [mi8937]"
-
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
@@ -204,7 +201,6 @@ exports() {
 	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
 	# export KBUILD_USERNAME="ping2109"
 	# export KBUILD_HOST="pings-FreeFire-GamingPC"
-	export CONFIG_LOCALVERSION=" - NevaKernel Mi 1.1 [mi8937]"
 	export ARCH=arm64
 	export SUBARCH=arm64
 
@@ -340,6 +336,9 @@ build_kernel() {
 <b>Linux Tag Version: </b><code>$LINUXVER</code>"
 
 	fi
+
+        export KBUILD_BUILD_USER="ping2109"
+	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
 
 	if [ $SILENCE = "1" ]
 	then

@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b 11-4.9.270 kernel
+git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b 11 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -58,7 +58,7 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 VARIANT=mi8937
 
 # Build Type
-BUILD_TYPE="Nightly"
+BUILD_TYPE="Release"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'

@@ -71,7 +71,7 @@ BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
-COMPILER=clang
+COMPILER=gcc
 
 # Kernel is LTO
 LTO=0
@@ -436,7 +436,7 @@ gen_zip() {
     cp -af anykernel-real.sh anykernel.sh
 	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi $KERN_VER/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
-	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
+	sed -i "s/kernel.compiler=.*/kernel.compiler=GCC/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh
 	sed -i "s/kernel.version=.*/kernel.version=$LINUXVER/g" anykernel.sh
 	sed -i "s/build.date=.*/build.date=$DATE/g" anykernel.sh

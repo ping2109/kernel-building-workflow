@@ -58,7 +58,7 @@ KERN_VER="1.0"
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC=changelog.txt
+POST_DESC="Initial build"
 
 #TG Post credits
 CREDITS="@me_cafebabe, @ping2109official"

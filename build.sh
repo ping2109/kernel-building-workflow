@@ -42,10 +42,10 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 5A"
+MODEL="Xiaomi Redmi 4A/5A"
 
 # The codename of the device
-DEVICE="riva"
+DEVICE="rova"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
@@ -55,7 +55,7 @@ DEFCONFIG=mi8937_defconfig
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 # Kernel Variant
-VARIANT=perf
+VARIANT=mi8937
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -163,7 +163,7 @@ DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/divyam234/AnyKernel3.git -b main $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b main $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then
@@ -177,7 +177,7 @@ DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="Neva-$LINUXVER-$VARIANT-riva-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="NevaKernel-$LINUXVER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -313,7 +313,7 @@ build_kernel() {
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>Neva-$VARIANT-$DEVICE</code>
+<b>Kernel Name: </b><code>NevaKernel-$LINUXVER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>"
 
 	fi
@@ -393,7 +393,7 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>Neva-$VARIANT-$DEVICE</code>
+<b>Kernel Name: </b><code>Neva-$LINUXVER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 

@@ -71,7 +71,7 @@ BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
-COMPILER=gcc
+COMPILER=clangxgcc
 
 # Kernel is LTO
 LTO=0
@@ -151,7 +151,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 	then
 		msg "|| Cloning GCC 12.0.0 Bare Metal ||"
 		git clone https://github.com/mvaisakh/gcc-arm64.git $KERNEL_DIR/gcc64 --depth=1
-        git clone https://github.com/mvaisakh/gcc-arm.git $KERNEL_DIR/gcc32 --depth=1
+        	git clone https://github.com/mvaisakh/gcc-arm.git $KERNEL_DIR/gcc32 --depth=1
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then

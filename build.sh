@@ -52,13 +52,16 @@ DEVICE="rova"
 DEFCONFIG=mi8937_defconfig
 
 #Kernel version
-KERN_VER="1.0"
+KERN_VER="1.1"
+
+#Custom Local Version
+SHOWN_NAME=" - NevaKernel Mi 1.1 [mi8937]"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Initial build"
+POST_DESC="Fixed small issues"
 
 #TG Post credits
 CREDITS="@me_cafebabe, @ping2109official"
@@ -199,6 +202,7 @@ setversioning() {
 exports() {
 	export KBUILD_BUILD_USER="ping2109"
 	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
+	export CONFIG_LOCALVERSION=$SHOWN_NAME
 	# export KBUILD_USERNAME="ping2109"
 	# export KBUILD_HOST="pings-FreeFire-GamingPC"
 	export ARCH=arm64

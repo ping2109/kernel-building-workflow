@@ -51,6 +51,9 @@ DEVICE="rova"
 # your device or check source
 DEFCONFIG=mi8937_defconfig
 
+#Kernel version
+KERN_VER="1.0"
+
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
@@ -179,7 +182,7 @@ DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="NevaKernel-$LINUXVER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="NevaKernel-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -315,7 +318,7 @@ build_kernel() {
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>NevaKernel-$LINUXVER-$DEVICE</code>
+<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>"
 
 	fi
@@ -395,7 +398,7 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>Neva-$LINUXVER-$DEVICE</code>
+<b>Kernel Name: </b><code>Neva-$KERN_VER-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 
@@ -417,7 +420,7 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi 1.0/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi $KERN_VER/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
 	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh

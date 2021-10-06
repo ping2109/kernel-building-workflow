@@ -197,8 +197,10 @@ setversioning() {
 ##--------------------------------------------------------------##
 
 exports() {
-	export KBUILD_BUILD_USER="ping2109"
-	export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
+	# export KBUILD_BUILD_USER="ping2109"
+	# export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
+	export KBUILD_USERNAME="ping2109"
+	export KBUILD_HOST="pings-FreeFire-GamingPC"
 	export ARCH=arm64
 	export SUBARCH=arm64
 

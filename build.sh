@@ -149,18 +149,16 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 
 	elif [ $COMPILER = "gcc" ]
 	then
-		msg "|| Cloning GCC 12.0.0 Bare Metal ||"
-		git clone https://github.com/mvaisakh/gcc-arm64.git $KERNEL_DIR/gcc64 --depth=1
-        	git clone https://github.com/mvaisakh/gcc-arm.git $KERNEL_DIR/gcc32 --depth=1
+		msg "|| Cloning GCC 10.3 ||"
+		git clone https://github.com/ping2109/aarch64-none-linux-gnu-compiler.git $KERNEL_DIR/gcc64 --depth=1
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then
 		msg "|| Cloning toolchain ||"
 		git clone --depth=1 https://github.com/kdrag0n/proton-clang -b master $KERNEL_DIR/clang
 
-		msg "|| Cloning GCC 12.0.0 Bare Metal ||"
-		git clone https://github.com/mvaisakh/gcc-arm64.git $KERNEL_DIR/gcc64 --depth=1
-		git clone https://github.com/mvaisakh/gcc-arm.git $KERNEL_DIR/gcc32 --depth=1
+		msg "|| Cloning GCC 10.3 ||"
+		git clone https://github.com/ping2109/aarch64-none-linux-gnu-compiler.git $KERNEL_DIR/gcc64 --depth=1
 	fi
 
 	# Toolchain Directory defaults to clang-llvm
@@ -211,11 +209,11 @@ exports() {
 	elif [ $COMPILER = "clangxgcc" ]
 	then
 		KBUILD_COMPILER_STRING=$("$TC_DIR"/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
-		PATH=$TC_DIR/bin:$GCC64_DIR/bin:$GCC32_DIR/bin:/usr/bin:$PATH
+		PATH=$TC_DIR/bin:$GCC64_DIR/bin:/usr/bin:$PATH
 	elif [ $COMPILER = "gcc" ]
 	then
-		KBUILD_COMPILER_STRING=$("$GCC64_DIR"/bin/aarch64-elf-gcc --version | head -n 1)
-		PATH=$GCC64_DIR/bin/:$GCC32_DIR/bin/:/usr/bin:$PATH
+		KBUILD_COMPILER_STRING=$("$GCC64_DIR"/bin/aarch64-none-linux-gnu-gcc --version | head -n 1)
+		PATH=$GCC64_DIR/bin/:/usr/bin:$PATH
 	fi
 
 	if [ $LTO = "1" ];then
@@ -233,18 +231,11 @@ exports() {
 
 	if [ $COMPILER = "gcc" ];then
 
-    if [ -e $GCC64_DIR/bin/aarch64-elf-gcc ];then
-        gcc64Type="$($GCC64_DIR/bin/aarch64-elf-gcc --version | head -n 1)"
+    if [ -e $GCC64_DIR/bin/aarch64-none-linux-gnu-gcc ];then
+        gcc64Type="$($GCC64_DIR/bin/aarch64-none-linux-gnu-gcc --version | head -n 1)"
     else
         cd $GCC64_DIR
         gcc64Type=$(git log --pretty=format:'%h: %s' -n1)
-        cd $KERNEL_DIR
-    fi
-    if [ -e $GCC32_DIR/bin/arm-eabi-gcc ];then
-        gcc32Type="$($GCC32_DIR/bin/arm-eabi-gcc --version | head -n 1)"
-    else
-        cd $GCC32_DIR
-        gcc32Type=$(git log --pretty=format:'%h: %s' -n1)
         cd $KERNEL_DIR
     fi
    fi
@@ -367,18 +358,16 @@ build_kernel() {
 	elif [ $COMPILER = "gcc" ]
 	then
 		make -j"$PROCS" O=out \
-				CROSS_COMPILE_ARM32=arm-eabi- \
-				CROSS_COMPILE=aarch64-elf- \
+				CROSS_COMPILE=aarch64-none-linux-gnu- \
 				AR=aarch64-elf-ar \
-				OBJDUMP=aarch64-elf-objdump \
-				STRIP=aarch64-elf-strip
+				OBJDUMP=aarch64-none-linux-gnu-objdump \
+				STRIP=aarch64-none-linux-gnu-strip
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then
 		make -j"$PROCS"  O=out \
 					CC=clang \
 					CROSS_COMPILE=aarch64-linux-gnu- \
-					CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 					AR=llvm-ar \
 					AS=llvm-as \
 					NM=llvm-nm \

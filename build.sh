@@ -315,7 +315,7 @@ build_kernel() {
 	if [ $INCREMENTAL = 0 ]
 	then
 		msg "|| Cleaning Sources ||"
-		make clean && make mrproper && rm -rf out
+		make clean
 	fi
 
 	if [ "$PTTG" = 1 ]
@@ -360,10 +360,10 @@ build_kernel() {
 	elif [ $COMPILER = "gcc" ]
 	then
 		make -j"$PROCS" O=out \
-				CROSS_COMPILE=aarch64-none-linux-gnu- # \
-				# AR=aarch64-none-linux-gnu-ar \
-				# OBJDUMP=aarch64-none-linux-gnu-objdump \
-				# STRIP=aarch64-none-linux-gnu-strip
+				CROSS_COMPILE=aarch64-none-linux-gnu- \
+				AR=aarch64-none-linux-gnu-ar \
+				OBJDUMP=aarch64-none-linux-gnu-objdump \
+				STRIP=aarch64-none-linux-gnu-strip
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then

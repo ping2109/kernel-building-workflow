@@ -60,6 +60,8 @@ DEFCONFIG=exynos7870-j7xelte_defconfig
 #Kernel version
 KERN_VER="3.0"
 
+EXTRA_NOTE="love you from the ceiling to the toilet"
+
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
@@ -332,7 +334,8 @@ build_kernel() {
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
 <b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
-<b>Linux Tag Version: </b><code>$LINUXVER</code>"
+<b>SELinux Version: </b><code>$LINUXVER</code>
+<b>Notes: </b><code>$EXTRA_NOTE</code>"
 
 	fi
 

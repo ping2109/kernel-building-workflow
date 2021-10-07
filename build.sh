@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b neva kernel
+git clone https://github.com/ping2109/NevaKernel -b msm8937-core-mi1.1 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -58,7 +58,7 @@ KERN_VER="1.1"
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Fixed small issues"
+POST_DESC="Rebrand and small fixes"
 
 #TG Post credits
 CREDITS="@me_cafebabe, @ping2109official"
@@ -188,7 +188,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="NevaKernel-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="NevaCore-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -303,7 +303,7 @@ tg_send_files(){
 - <b>MD5 checksum:</b> <code>$MD5CHECK</code>
 - <b>Zip name:</b> <code>$KERNELNAME.zip</code>
 
-- <b>Name: </b><code>NevaKernel Mi $KERN_VER</code>
+- <b>Name: </b><code>NevaCore Mi $KERN_VER</code>
 - <b>Device: </b><code>$MODEL</code>
 - <b>Codename: </b><code>$DEVICE</code>
 - <b>Build date: </b><code>$DATE</code>
@@ -330,13 +330,13 @@ build_kernel() {
 
 	if [ "$PTTG" = 1 ]
  	then
-            tg_post_msg "<b>🔨 NevaKernel Build Triggered</b>
+            tg_post_msg "<b>🔨 NevaCore Build Triggered</b>
 <b>Host Core Count : </b><code>$PROCS</code>
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
-<b>Linux Tag Version: </b><code>$LINUXVER</code>"
+<b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
+<b>SELinux Version: </b><code>$LINUXVER</code>"
 
 	fi
 
@@ -415,8 +415,8 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
-<b>Linux Tag Version: </b><code>$LINUXVER</code>
+<b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
+<b>SELinux Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 
 				exit -1
@@ -437,7 +437,7 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi $KERN_VER/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=NevaCore Mi $KERN_VER/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
 	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh

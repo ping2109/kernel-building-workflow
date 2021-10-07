@@ -358,7 +358,7 @@ build_kernel() {
 
 	if [ $COMPILER = "clang" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -k O=out \
 				CROSS_COMPILE=aarch64-linux-gnu- \
 				CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 				CC=clang \
@@ -368,7 +368,7 @@ build_kernel() {
 
 	elif [ $COMPILER = "gcc" ]
 	then
-		make -j"$PROCS" O=out \
+		make -j"$PROCS" -k O=out \
 				CROSS_COMPILE=aarch64-none-linux-gnu- \
 				AR=aarch64-none-linux-gnu-ar \
 				OBJDUMP=aarch64-none-linux-gnu-objdump \
@@ -376,7 +376,7 @@ build_kernel() {
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then
-		make -j"$PROCS"  O=out \
+		make -j"$PROCS" -k O=out \
 					CC=clang \
 					CROSS_COMPILE=aarch64-linux-gnu- \
 					AR=llvm-ar \

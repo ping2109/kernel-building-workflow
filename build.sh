@@ -467,4 +467,4 @@ gen_zip() {
 setversioning
 clone
 exports
-build_kernel
+build_kernel || true

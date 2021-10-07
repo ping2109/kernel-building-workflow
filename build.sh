@@ -40,7 +40,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/NevaKernel-7870 -b exynos7870-pure10 kernel
+git clone https://github.com/samsungexynos7870/android_kernel_samsung_exynos7870 -b simple_q_permissive kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##

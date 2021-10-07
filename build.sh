@@ -38,7 +38,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/NevaKernel-7870 -b upstream kernel
+git clone https://github.com/ping2109/NevaKernel-7870 -b pure10 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##

@@ -24,7 +24,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
  curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 \
  libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make \
  optipng bc libstdc++6 libncurses5 wget python3 python3-pip python gcc clang  \
- libssl-dev rsync flex git-lfs libz3-dev libz3-4 axel tar gcc llvm lld g++-multilib clang default-jre libxml2 ccache
+ libssl-dev rsync flex git-lfs libz3-dev libz3-4 axel tar gcc llvm lld g++-multilib clang default-jre libxml2 ccache \
+ git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip xz-utils fontconfig git automake lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng bc libstdc++6 libncurses5 wget python3 python3-pip python gcc clang libssl-dev rsync flex git-lfs libz3-dev libz3-4 axel tar gcc llvm lld g++-multilib default-jre libxml2
 
 }
 

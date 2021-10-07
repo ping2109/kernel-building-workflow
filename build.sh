@@ -374,7 +374,7 @@ build_kernel() {
 				CROSS_COMPILE=aarch64-none-linux-gnu- \
 				AR=aarch64-none-linux-gnu-ar \
 				OBJDUMP=aarch64-none-linux-gnu-objdump \
-				STRIP=aarch64-none-linux-gnu-strip
+				STRIP=aarch64-none-linux-gnu-strip  || true
 
 	elif [ $COMPILER = "clangxgcc" ]
 	then
@@ -467,4 +467,4 @@ gen_zip() {
 setversioning
 clone
 exports
-build_kernel || true
+build_kernel

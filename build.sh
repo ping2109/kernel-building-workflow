@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/NevaKernel -b msm8937-core-mi1-1 kernel
+git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b neva kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -42,23 +42,23 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 4A/5A"
+MODEL="Xiaomi Redmi 5A"
 
 # The codename of the device
-DEVICE="rova"
+DEVICE="riva"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=mi8937_defconfig
+DEFCONFIG=riva_defconfig
 
 #Kernel version
-KERN_VER="1.1"
+KERN_VER="2.0"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Rebrand and small fixes"
+POST_DESC="S2W addition and renaming"
 
 #TG Post credits
 CREDITS="@me_cafebabe, @ping2109official"
@@ -67,7 +67,7 @@ CREDITS="@me_cafebabe, @ping2109official"
 VARIANT=mi8937
 
 # Build Type
-BUILD_TYPE="Release"
+BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'

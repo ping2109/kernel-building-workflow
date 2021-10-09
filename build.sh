@@ -32,7 +32,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/NevaKernel -b msm8937-core-mi1.1 kernel
+git clone https://github.com/ping2109/NevaKernel -b msm8937-core-mi1-1 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##

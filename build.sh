@@ -52,6 +52,7 @@ DEVICE="riva"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=riva_defconfig
+LOCAL_VER=" - NevaCore Mi 2.0 [mi8937]"
 
 #Kernel version
 KERN_VER="2.0"
@@ -200,12 +201,10 @@ setversioning() {
 
 exports() {
 
-        # export KBUILD_BUILD_USER="ping2109"
-	# export KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
         export CONFIG_BUILD_BUILD_USER="ping2109"
 	export CONFIG_KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
-	# export KBUILD_USERNAME="ping2109"
-	# export KBUILD_HOST="pings-FreeFire-GamingPC"
+	export DEFAULT_USERNAME="ping2109"
+	export DEFAULT_HOSTNAME="pings-FreeFire-GamingPC"
 	export ARCH=arm64
 	export SUBARCH=arm64
 
@@ -349,7 +348,8 @@ build_kernel() {
 		MAKE+=( -s )
 	fi
 
-	msg "|| Started Compilation ||"
+	msg "|| Started Compilation ||"z
+	export LOCALVERSION=$LOCAL_VER
 	make O=out $DEFCONFIG
 	if [ $DEF_REG = 1 ]
 	then

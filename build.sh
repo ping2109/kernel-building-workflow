@@ -30,9 +30,11 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
+KERN_SOURCE="https://github.com/ping2109/android_kernel_xiaomi_msm8937"
+
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b neva kernel
+git clone $KERN_SOURCE -b neva kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -42,23 +44,23 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 4A/5A"
+MODEL="Xiaomi Redmi 5A"
 
 # The codename of the device
-DEVICE="rova"
+DEVICE="riva"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=mi8937_defconfig
+DEFCONFIG=riva_defconfig
 
 #Kernel version
-KERN_VER="1.1"
+KERN_VER="2.0"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Fixed small issues"
+POST_DESC="S2W addition and renaming"
 
 #TG Post credits
 CREDITS="@me_cafebabe, @ping2109official"
@@ -67,7 +69,7 @@ CREDITS="@me_cafebabe, @ping2109official"
 VARIANT=mi8937
 
 # Build Type
-BUILD_TYPE="Release"
+BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
@@ -188,7 +190,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="NevaKernel-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="NevaCore-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -303,13 +305,14 @@ tg_send_files(){
 - <b>MD5 checksum:</b> <code>$MD5CHECK</code>
 - <b>Zip name:</b> <code>$KERNELNAME.zip</code>
 
-- <b>Name: </b><code>NevaKernel Mi $KERN_VER</code>
+- <b>Name: </b><code>NevaCore Mi $KERN_VER</code>
 - <b>Device: </b><code>$MODEL</code>
 - <b>Codename: </b><code>$DEVICE</code>
 - <b>Build date: </b><code>$DATE</code>
 - <b>SELinux version: </b><code>$LINUXVER</code>
 - <b>Description: </b><code>$POST_DESC</code>
-- <b>Credits: </b><code>$CREDITS</code>"
+- <b>Credits: </b><code>$CREDITS</code>
+- <b>Source code: <a href="$KERN_SOURCE">here</a>"
 
         curl --progress-bar -F document=@"$KernelFiles" "https://api.telegram.org/bot$TOKEN/sendDocument" \
         -F chat_id="$CHATID"  \
@@ -330,13 +333,14 @@ build_kernel() {
 
 	if [ "$PTTG" = 1 ]
  	then
-            tg_post_msg "<b>🔨 NevaKernel Build Triggered</b>
+            tg_post_msg "<b>🔨 NevaCore Build Triggered</b>
 <b>Host Core Count : </b><code>$PROCS</code>
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
-<b>Linux Tag Version: </b><code>$LINUXVER</code>"
+<b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
+<b>SELinux Version: </b><code>$LINUXVER</code>
+<b>Source code: <a href="$KERN_SOURCE">here</a>"
 
 	fi
 
@@ -415,8 +419,8 @@ build_kernel() {
  			then
 				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
-<b>Kernel Name: </b><code>NevaKernel-$KERN_VER-$DEVICE</code>
-<b>Linux Tag Version: </b><code>$LINUXVER</code>
+<b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
+<b>SELinux Version: </b><code>$LINUXVER</code>
 <b>Time Taken: </b><code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s)</code>"
 
 				exit -1
@@ -437,7 +441,7 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=NevaKernel Mi $KERN_VER/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=NevaCore Mi $KERN_VER/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
 	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh

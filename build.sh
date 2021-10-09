@@ -45,18 +45,18 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 4A/5A"
+MODEL="Xiaomi Redmi 5A"
 
 # The codename of the device
-DEVICE="rova"
+DEVICE="riva"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=mi8937_defconfig 
-LOCAL_VER=" - NevaCore Mi 2.0 [mi8937]"
+LOCAL_VER=" - NevaCore Mi [Redmi 5A]"
 
 #Kernel version
-KERN_VER="2.0"
+KERN_VER="3.0"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."

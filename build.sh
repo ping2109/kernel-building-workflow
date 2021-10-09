@@ -31,10 +31,11 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 installDependencies
 
 KERN_SOURCE="https://github.com/ping2109/android_kernel_xiaomi_msm8937"
+KERN_BRANCH="test"
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone $KERN_SOURCE -b neva kernel
+git clone $KERN_SOURCE -b $KERN_BRANCH kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##

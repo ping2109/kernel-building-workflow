@@ -347,7 +347,8 @@ build_kernel() {
 		MAKE+=( -s )
 	fi
 
-	msg "|| Started Compilation ||"z
+	msg "|| Started Compilation ||"
+	sed '/^CONFIG_LOCALVERSION=/d' arch/arm64/configs/$DEFCONFIG
 	export LOCALVERSION=$LOCAL_VER
 	export DEFAULT_USERNAME="ping2109"
 	export DEFAULT_HOSTNAME="pings-freefire-gamingpc"

@@ -311,7 +311,7 @@ tg_send_files(){
 - <b>SELinux version: </b><code>$LINUXVER</code>
 - <b>Description: </b><code>$POST_DESC</code>
 - <b>Credits: </b><code>$CREDITS</code>
-- <b>Source code: <a href="$KERN_SOURCE">here</a>"
+- <b>Source code: </b><a href="$KERN_SOURCE">here</a>"
 
         curl --progress-bar -F document=@"$KernelFiles" "https://api.telegram.org/bot$TOKEN/sendDocument" \
         -F chat_id="$CHATID"  \
@@ -339,7 +339,7 @@ build_kernel() {
 <b>Build Date: </b><code>$DATE</code>
 <b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
 <b>SELinux Version: </b><code>$LINUXVER</code>
-<b>Source code: <a href="$KERN_SOURCE">here</a>"
+<b>Source code: </b><a href="$KERN_SOURCE">here</a>"
 
 	fi
 

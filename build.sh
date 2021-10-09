@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/ping2109/android_kernel_xiaomi_msm8937"
-KERN_BRANCH="test"
+KERN_SOURCE="https://github.com/ping2109/NevaKernel-msm8937"
+KERN_BRANCH="main"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,14 +45,14 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 5A"
+MODEL="Xiaomi Redmi 4A/5A"
 
 # The codename of the device
-DEVICE="riva"
+DEVICE="rova"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=riva_defconfig
+DEFCONFIG=mi8937_defconfig 
 LOCAL_VER=" - NevaCore Mi 2.0 [mi8937]"
 
 #Kernel version
@@ -62,16 +62,16 @@ KERN_VER="2.0"
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="S2W addition and renaming"
+POST_DESC="Many changes are done"
 
 #TG Post credits
-CREDITS="@me_cafebabe, @ping2109official"
+CREDITS="@me_cafebabe, @mi-msm8937, @ping2109official"
 
 # Kernel Variant
 VARIANT=mi8937
 
 # Build Type
-BUILD_TYPE="Nightly"
+BUILD_TYPE="Release"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
@@ -349,6 +349,8 @@ build_kernel() {
 
 	msg "|| Started Compilation ||"z
 	export LOCALVERSION=$LOCAL_VER
+	export DEFAULT_USERNAME="ping2109"
+	export DEFAULT_HOSTNAME="pings-freefire-gamingpc"
 	make O=out $DEFCONFIG
 	if [ $DEF_REG = 1 ]
 	then

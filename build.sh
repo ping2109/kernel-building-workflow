@@ -35,7 +35,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/Ares_7870 -b 120hz kernel
+git clone https://github.com/davinash97/AEON kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -52,7 +52,7 @@ DEVICE="j7xelte"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=exynos7870-j7xelte_defconfig
+DEFCONFIG=j7xelte_defconfig
 
 #Kernel version
 KERN_VER="3.0"
@@ -76,7 +76,7 @@ BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
-COMPILER=gcc
+COMPILER=clang
 
 # Kernel is LTO
 LTO=0

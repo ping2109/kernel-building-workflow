@@ -30,9 +30,11 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
+KERN_SOURCE="https://github.com/ping2109/android_kernel_xiaomi_msm8937"
+
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/ping2109/android_kernel_xiaomi_msm8937 -b neva kernel
+git clone $KERN_SOURCE -b neva kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -309,7 +311,8 @@ tg_send_files(){
 - <b>Build date: </b><code>$DATE</code>
 - <b>SELinux version: </b><code>$LINUXVER</code>
 - <b>Description: </b><code>$POST_DESC</code>
-- <b>Credits: </b><code>$CREDITS</code>"
+- <b>Credits: </b><code>$CREDITS</code>
+- <b>Source code: <a href="$KERN_SOURCE">here</a>"
 
         curl --progress-bar -F document=@"$KernelFiles" "https://api.telegram.org/bot$TOKEN/sendDocument" \
         -F chat_id="$CHATID"  \
@@ -336,7 +339,8 @@ build_kernel() {
 <b>Codename: </b><code>$DEVICE</code>
 <b>Build Date: </b><code>$DATE</code>
 <b>Kernel Name: </b><code>NevaCore-$KERN_VER-$DEVICE</code>
-<b>SELinux Version: </b><code>$LINUXVER</code>"
+<b>SELinux Version: </b><code>$LINUXVER</code>
+<b>Source code: <a href="$KERN_SOURCE">here</a>"
 
 	fi
 

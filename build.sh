@@ -35,7 +35,7 @@ installDependencies
 
 ## clone Kernel
 echo "Cloning Kernel"
-git clone https://github.com/davinash97/AEON kernel
+git clone https://github.com/ping2109/NevaKernel-7870 kernel
 
 ##------------------------------------------------------##
 ##----------Basic Informations, COMPULSORY--------------##
@@ -342,6 +342,7 @@ build_kernel() {
 	fi
 
 	msg "|| Started Compilation ||"
+	echo 3 > /proc/sys/vm/drop_caches 
 	make O=out $DEFCONFIG
 	if [ $DEF_REG = 1 ]
 	then

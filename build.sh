@@ -342,7 +342,7 @@ build_kernel() {
 	fi
 
 	msg "|| Started Compilation ||"
-	echo 3 > /proc/sys/vm/drop_caches 
+	sync; echo 3 | sudo tee /proc/sys/vm/drop_caches 
 	make O=out $DEFCONFIG
 	if [ $DEF_REG = 1 ]
 	then

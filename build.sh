@@ -52,7 +52,7 @@ DEVICE="j7xelte"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=j7xelte_defconfig
+DEFCONFIG=exynos7870-j7xelte_defconfig
 
 #Kernel version
 KERN_VER="3.0"

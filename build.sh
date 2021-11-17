@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/ping2109/NevaKernel-msm8937"
-KERN_BRANCH="main"
+KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
+KERN_BRANCH="oldcam-eas"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,33 +45,33 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi 4A/5A"
+MODEL="Xiaomi Redmi Note 7"
 
 # The codename of the device
-DEVICE="rova"
+DEVICE="lavender"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=mi8937_defconfig 
-LOCAL_VER=" - NevaCore Mi 2.0 [mi8937]"
+DEFCONFIG=lavender-perf_defconfig
+LOCAL_VER=" - NevaCore 1.0 [lavender]"
 
 #Kernel version
-KERN_VER="2.0"
+KERN_VER="1.0"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Many changes are done"
+POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@me_cafebabe, @mi-msm8937, @ping2109official"
+CREDITS="@ping2109official"
 
 # Kernel Variant
-VARIANT=mi8937
+VARIANT=oldcam
 
 # Build Type
-BUILD_TYPE="Release"
+BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
@@ -178,7 +178,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b rova $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then

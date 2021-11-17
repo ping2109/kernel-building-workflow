@@ -53,7 +53,7 @@ DEVICE="lavender"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=lavender-perf_defconfig
-LOCAL_VER=" - NevaCore 1.0 [lavender]"
+LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
 KERN_VER="1.0"

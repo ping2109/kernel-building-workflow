@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/anht3889/android_kernel_lge_sm8150_a11"
+KERN_BRANCH="main"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,14 +45,14 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="LG V50"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="flashlmdd"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
+DEFCONFIG=mh2lm_5g_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
@@ -68,7 +68,7 @@ POST_DESC="Barely any changes were done"
 CREDITS="@ping2109official"
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=stock
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -305,7 +305,7 @@ tg_send_files(){
 - <b>MD5 checksum:</b> <code>$MD5CHECK</code>
 - <b>Zip name:</b> <code>$KERNELNAME.zip</code>
 
-- <b>Name: </b><code>NevaCore Mi $KERN_VER</code>
+- <b>Name: </b><code>NevaCore $KERN_VER</code>
 - <b>Device: </b><code>$MODEL</code>
 - <b>Codename: </b><code>$DEVICE</code>
 - <b>Build date: </b><code>$DATE</code>
@@ -443,7 +443,7 @@ gen_zip() {
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc
     cp -af anykernel-real.sh anykernel.sh
-	sed -i "s/kernel.string=.*/kernel.string=NevaCore Mi $KERN_VER/g" anykernel.sh
+	sed -i "s/kernel.string=.*/kernel.string=NevaCore $KERN_VER/g" anykernel.sh
 	sed -i "s/kernel.for=.*/kernel.for=$VARIANT/g" anykernel.sh
 	sed -i "s/kernel.compiler=.*/kernel.compiler=Proton clang/g" anykernel.sh
 	sed -i "s/kernel.made=.*/kernel.made=ping2109/g" anykernel.sh

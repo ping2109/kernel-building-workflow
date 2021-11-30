@@ -52,7 +52,7 @@ DEVICE="flashlmdd"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=mh2lm_5g_defconfig
+DEFCONFIG=cuttlefish_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version

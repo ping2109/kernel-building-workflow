@@ -31,7 +31,7 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 installDependencies
 
 KERN_SOURCE="https://github.com/SGCMarkus/android_kernel_lge_sm8150"
-KERN_BRANCH="lineage-18.1"
+KERN_BRANCH="lineage-18.1-V510N-30a-base-test"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -52,7 +52,7 @@ DEVICE="flashlmdd"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=cuttlefish_defconfig
+DEFCONFIG=flashlmdd_lao_com-perf_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version

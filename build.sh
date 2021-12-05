@@ -352,7 +352,7 @@ build_kernel() {
 	export LOCALVERSION=$LOCAL_VER
 	export DEFAULT_USERNAME="ping2109"
 	export DEFAULT_HOSTNAME="pings-freefire-gamingpc"
-	make O=out $DEFCONFIG
+	make O=out $DEFCONFIG ; make mh2lm_5g_defconfig ; make defconfig
 	if [ $DEF_REG = 1 ]
 	then
 		cp .config arch/arm64/configs/$DEFCONFIG

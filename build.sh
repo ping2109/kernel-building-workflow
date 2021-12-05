@@ -31,7 +31,7 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 installDependencies
 
 KERN_SOURCE="https://github.com/SGCMarkus/android_kernel_lge_sm8150"
-KERN_BRANCH="lineage-18.1-V510N-30a-base-test"
+KERN_BRANCH="lineage-18.1"
 
 ## clone Kernel
 echo "Cloning Kernel"

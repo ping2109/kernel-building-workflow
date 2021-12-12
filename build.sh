@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/Alone0316/kernel_mido"
+KERN_BRANCH="normal"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,14 +45,14 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="Xiaomi Redmi Note 4X"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="mido"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
+DEFCONFIG=mido_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
@@ -65,10 +65,10 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@ping2109official"
+CREDITS="@pingmado"
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=nightly
 
 # Build Type
 BUILD_TYPE="Nightly"

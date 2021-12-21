@@ -31,7 +31,7 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 installDependencies
 
 KERN_SOURCE="https://github.com/ping2109/kernel_xiaomi_mido"
-KERN_BRANCH="120hz"
+KERN_BRANCH="ur-mom"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -53,7 +53,7 @@ DEVICE="mido"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=mido_defconfig
-LOCAL_VER="- NevaCore 120hz [Mido]"
+LOCAL_VER="- NevaCore OC [Mido]"
 
 #Kernel version
 KERN_VER="69"

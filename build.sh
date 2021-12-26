@@ -30,19 +30,10 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
+#####################################################
+
 KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
 KERN_BRANCH="oldcam-eas"
-
-## clone Kernel
-echo "Cloning Kernel"
-git clone $KERN_SOURCE -b $KERN_BRANCH kernel
-
-##------------------------------------------------------##
-##----------Basic Informations, COMPULSORY--------------##
-
-# The defult directory where the kernel should be placed
-KERNEL_DIR=$(pwd)/kernel
-cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
 MODEL="Xiaomi Redmi Note 7"
@@ -53,6 +44,8 @@ DEVICE="lavender"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=lavender-perf_defconfig
+
+# The version you want to see in Software Info
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
@@ -65,10 +58,10 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@ping2109official"
+CREDITS=""
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -80,16 +73,28 @@ COMPILER=clang
 # Kernel is LTO
 LTO=0
 
+# Clean source before building. 1 is NO(default) | 0 is YES
+INCREMENTAL=0
+
+TELEGRAM_CHATID=
+
+TOKEN=
+
+#####################################################
+
 # Specify linker.
 # 'ld.lld'(default)
 LINKER=ld.lld
 
-# Clean source prior building. 1 is NO(default) | 0 is YES
-INCREMENTAL=0
 
-TELEGRAM_CHATID=1770565427
+## clone Kernel
+echo "Cloning Kernel"
+git clone $KERN_SOURCE -b $KERN_BRANCH kernel
 
-TOKEN=$TELEGRAM_TOKEN
+# The defult directory where the kernel should be placed
+KERNEL_DIR=$(pwd)/kernel
+cd $KERNEL_DIR
+
 
 # Push ZIP to Telegram. 1 is YES | 0 is NO(default)
 PTTG=1

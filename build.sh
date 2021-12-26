@@ -183,7 +183,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b main $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then

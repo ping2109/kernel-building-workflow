@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/PainKiller3/kernel_xiaomi_sdm845"
+KERN_BRANCH="twelve"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,15 +45,15 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="POCOPHONE F1"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="beryllium"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
-LOCAL_VER="-NevaCore_1.0"
+DEFCONFIG=beryllium_defconfig
+LOCAL_VER="- NevaCore 1.0 [beryllium]"
 
 #Kernel version
 KERN_VER="1.0"
@@ -65,10 +65,10 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@ping2109official"
+CREDITS="@pingmado"
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=nightly
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -178,7 +178,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b beryllium $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then
@@ -202,10 +202,6 @@ setversioning() {
 
 exports() {
 
-        export CONFIG_BUILD_BUILD_USER="ping2109"
-	export CONFIG_KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
-	export DEFAULT_USERNAME="ping2109"
-	export DEFAULT_HOSTNAME="pings-FreeFire-GamingPC"
 	export ARCH=arm64
 	export SUBARCH=arm64
 
@@ -232,6 +228,10 @@ exports() {
 	PROCS=$(nproc)
 	export PROCS
 
+	export CONFIG_BUILD_BUILD_USER="ping2109"
+	export CONFIG_KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
+	export DEFAULT_USERNAME="ping2109"
+	export DEFAULT_HOSTNAME="pings-FreeFire-GamingPC"
 	BOT_MSG_URL="https://api.telegram.org/bot$TOKEN/sendMessage"
 	BOT_BUILD_URL="https://api.telegram.org/bot$TOKEN/sendDocument"
 	PROCS=$(nproc)

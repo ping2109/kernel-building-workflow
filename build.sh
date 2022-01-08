@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/PainKiller3/kernel_xiaomi_sdm845"
-KERN_BRANCH="twelve"
+KERN_SOURCE="https://github.com/ping2109/kernel_xiaomi_sdm845"
+KERN_BRANCH="eleven-90hz"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -53,10 +53,10 @@ DEVICE="beryllium"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=beryllium_defconfig
-LOCAL_VER="- NevaCore 1.0 [beryllium]"
+LOCAL_VER="- NevaCore 90hz [bery]"
 
 #Kernel version
-KERN_VER="1.0"
+KERN_VER="eleven-90hz"
 
 # Show manufacturer info
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."

@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/ArianK16a/android_kernel_xiaomi_sm6150"
+KERN_BRANCH="lineage-18.1"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,10 +45,10 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="Xiaomi Redmi K20 / Mi 9T"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="davinci"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
@@ -178,7 +178,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b davinci $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then

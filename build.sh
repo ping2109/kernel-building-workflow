@@ -52,7 +52,8 @@ DEVICE="davinci"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
+DEFCONFIG=davinci_defconfig
+
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version

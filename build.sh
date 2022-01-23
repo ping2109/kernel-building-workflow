@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/ArianK16a/android_kernel_xiaomi_sm6150"
-KERN_BRANCH="lineage-18.1"
+KERN_SOURCE="https://github.com/vantoman/kernel_xiaomi_sm6150"
+KERN_BRANCH="VantomKernelR"
 
 ## clone Kernel
 echo "Cloning Kernel"

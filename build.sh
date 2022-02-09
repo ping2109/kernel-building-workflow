@@ -206,8 +206,8 @@ exports() {
 	export CONFIG_KBUILD_BUILD_HOST="pings-FreeFire-GamingPC"
 	export DEFAULT_USERNAME="ping2109"
 	export DEFAULT_HOSTNAME="pings-FreeFire-GamingPC"
-	export ARCH=arm64
-	export SUBARCH=arm64
+	export ARCH=arm
+	export SUBARCH=arm
 
 	if [ $COMPILER = "clang" ]
 	then
@@ -348,15 +348,15 @@ build_kernel() {
 	fi
 
 	msg "|| Started Compilation ||"
-	sed -i 's/CONFIG_LOCALVERSION=/# CONFIG_LOCALVERSION=/g' arch/arm64/configs/$DEFCONFIG
+	sed -i 's/CONFIG_LOCALVERSION=/# CONFIG_LOCALVERSION=/g' arch/arm/configs/$DEFCONFIG
 	export LOCALVERSION=$LOCAL_VER
 	export DEFAULT_USERNAME="ping2109"
 	export DEFAULT_HOSTNAME="pings-freefire-gamingpc"
 	make O=out $DEFCONFIG
 	if [ $DEF_REG = 1 ]
 	then
-		cp .config arch/arm64/configs/$DEFCONFIG
-		git add arch/arm64/configs/$DEFCONFIG
+		cp .config arch/arm/configs/$DEFCONFIG
+		git add arch/arm/configs/$DEFCONFIG
 		git commit -m "$DEFCONFIG: Regenerate
 						This is an auto-generated commit"
 	fi
@@ -405,7 +405,7 @@ build_kernel() {
 		BUILD_END=$(date +"%s")
 		DIFF=$((BUILD_END - BUILD_START))
 
-		if [ -f $KERNEL_DIR/out/arch/arm64/boot/$FILES ]
+		if [ -f $KERNEL_DIR/out/arch/arm/boot/$FILES ]
 		then
 			msg "|| Kernel successfully compiled ||"
 			if [ $BUILD_DTBO = 1 ]
@@ -413,7 +413,7 @@ build_kernel() {
 				msg "|| Building DTBO ||"
 				tg_post_msg "<code>Building DTBO..</code>"
 				python2 "$KERNEL_DIR/scripts/ufdt/libufdt/utils/src/mkdtboimg.py" \
-					create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/$DTBO_PATH"
+					create "$KERNEL_DIR/out/arch/arm/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm/boot/dts/$DTBO_PATH"
 			fi
 				gen_zip
 			else
@@ -435,10 +435,10 @@ build_kernel() {
 
 gen_zip() {
 	msg "|| Zipping into a flashable zip ||"
-	mv "$KERNEL_DIR"/out/arch/arm64/boot/Image.gz-dtb $AK_DIR/Image.gz-dtb
+	mv "$KERNEL_DIR"/out/arch/arm/boot/Image.gz-dtb $AK_DIR/Image.gz-dtb
 	if [ $BUILD_DTBO = 1 ]
 	then
-		mv "$KERNEL_DIR"/out/arch/arm64/boot/dtbo.img $AK_DIR/dtbo.img
+		mv "$KERNEL_DIR"/out/arch/arm/boot/dtbo.img $AK_DIR/dtbo.img
 	fi
 	cd $AK_DIR
 	#cp -af "$KERNEL_DIR"/init.ElectroSpectrum.rc init.spectrum.rc && sed -i "s/persist.spectrum.kernel.*/persist.spectrum.kernel ElectroPerf-LTO-$VARIANT-v2.3/g" init.spectrum.rc

@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/rINanDO/android_kernel_samsung_smdk4412"
+KERN_BRANCH="lineage-18.0"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,14 +45,14 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="Samsung Galaxy S2 INTL"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="I9100"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
+DEFCONFIG=lineageos_i9100_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
@@ -68,14 +68,14 @@ POST_DESC="Barely any changes were done"
 CREDITS="@ping2109official"
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=kang
 
 # Build Type
 BUILD_TYPE="Nightly"
 
 # Specify compiler.
 # 'clang' or 'clangxgcc' or 'gcc'
-COMPILER=clang
+COMPILER=gcc
 
 # Kernel is LTO
 LTO=0
@@ -178,7 +178,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b main $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then

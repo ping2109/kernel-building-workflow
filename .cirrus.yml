@@ -21,6 +21,7 @@ task:
        
        
   Build-kernel_script:
+       - sudo chmod -R 777 bash.sh
        - bash build.sh
 
 

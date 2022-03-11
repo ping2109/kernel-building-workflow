@@ -1,3 +1,6 @@
+env:
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+
 task:
   name: "Building kernel"
   timeout_in: 240m

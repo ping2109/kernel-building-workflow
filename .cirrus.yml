@@ -4,6 +4,22 @@ task:
   container:
       image: ubuntu:20.04
   
+  Build-Env-Setup_script:
+       - export DEBIAN_FRONTEND=noninteractive
+       - apt update
+       - apt install sudo
+       - df -h
+       - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+       - ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+       - apt-get install -y tzdata
+       - dpkg-reconfigure --frontend noninteractive tzdata
+       - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache neofetch -y
+       - sudo apt install python2 -y
+       - sudo ln -sf /usr/bin/python2 /usr/bin/python
+       - git config --global user.name "Sushrut1101"
+       - git config --global user.email "guptasushrut@gmail.com"
+       
+       
   Build-kernel_script:
        - bash build.sh
 

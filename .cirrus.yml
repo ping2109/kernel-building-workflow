@@ -1,0 +1,8 @@
+task:
+  name: "Building kernel"
+  timeout_in: 240m
+  container:
+      image: ubuntu:20.04
+  
+  Build-kernel_script:
+       - bash build.sh

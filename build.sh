@@ -30,8 +30,8 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+KERN_SOURCE="https://github.com/anht3889/android_kernel_lge_sm8150"
+KERN_BRANCH="aosp"
 
 ## clone Kernel
 echo "Cloning Kernel"
@@ -45,14 +45,14 @@ KERNEL_DIR=$(pwd)/kernel
 cd $KERNEL_DIR
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="LG V50 ThinQ"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="flashlmdd"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
+DEFCONFIG=flashlmdd_lao_com-perf_defconfig
 LOCAL_VER="-NevaCore_1.0"
 
 #Kernel version
@@ -65,10 +65,10 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@ping2109official"
+CREDITS="@AnhNotAnh, @anht3889"
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -178,7 +178,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b flashlmdd $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then
@@ -192,7 +192,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="NevaCore-$KERN_VER-$DEVICE-$(TZ=Asia/HoChiMinh date +"%Y-%m-%d-%s")"
+    KERNELNAME="NevaCore-$KERN_VER-$DEVICE-$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"

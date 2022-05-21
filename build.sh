@@ -53,7 +53,7 @@ DEVICE="rova"
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
 DEFCONFIG=mi8937_defconfig 
-LOCAL_VER=" - NevaCore Mi 2.0 [mi8937]"
+LOCAL_VER=" - NevaCore OC Edition [rova]"
 
 #Kernel version
 KERN_VER="2.0"
@@ -62,10 +62,10 @@ KERN_VER="2.0"
 MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 
 #TG Post description and notes
-POST_DESC="Many changes are done"
+POST_DESC="Many changes were done"
 
 #TG Post credits
-CREDITS="@me_cafebabe, @mi-msm8937, @ping2109official"
+CREDITS="@me_cafebabe, @ping2109official"
 
 # Kernel Variant
 VARIANT=mi8937

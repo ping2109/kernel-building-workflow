@@ -31,7 +31,7 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 installDependencies
 
 KERN_SOURCE="https://github.com/ping2109/NevaKernel-msm8937"
-KERN_BRANCH="main"
+KERN_BRANCH="test"
 
 ## clone Kernel
 echo "Cloning Kernel"

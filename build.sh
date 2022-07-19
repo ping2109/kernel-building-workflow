@@ -30,30 +30,23 @@ sudo apt -y install git automake lzop bison gperf build-essential zip \
 
 installDependencies
 
-KERN_SOURCE="https://github.com/stormbreaker-project/kernel_xiaomi_lavender"
-KERN_BRANCH="oldcam-eas"
+#####################################################
 
-## clone Kernel
-echo "Cloning Kernel"
-git clone $KERN_SOURCE -b $KERN_BRANCH kernel
-
-##------------------------------------------------------##
-##----------Basic Informations, COMPULSORY--------------##
-
-# The defult directory where the kernel should be placed
-KERNEL_DIR=$(pwd)/kernel
-cd $KERNEL_DIR
+KERN_SOURCE="https://github.com/eurekadevelopment/Eureka-Kernel-Exynos7885-Q-R-S"
+KERN_BRANCH="R8.0_rom"
 
 # The name of the device for which the kernel is built
-MODEL="Xiaomi Redmi Note 7"
+MODEL="Samsung Galaxy A20"
 
 # The codename of the device
-DEVICE="lavender"
+DEVICE="a20"
 
 # The defconfig which should be used. Get it from config.gz from
 # your device or check source
-DEFCONFIG=lavender-perf_defconfig
-LOCAL_VER="-NevaCore_1.0"
+DEFCONFIG=exynos7885-a20_permissive_defconfig
+
+# The version you want to see in Software Info
+LOCAL_VER=" pingpong kernel [OneUI - Internal Build]"
 
 #Kernel version
 KERN_VER="1.0"
@@ -65,10 +58,10 @@ MANUFACTURERINFO="Doofenshmirtz Evil Inc."
 POST_DESC="Barely any changes were done"
 
 #TG Post credits
-CREDITS="@ping2109official"
+CREDITS=""
 
 # Kernel Variant
-VARIANT=oldcam
+VARIANT=
 
 # Build Type
 BUILD_TYPE="Nightly"
@@ -80,16 +73,28 @@ COMPILER=clang
 # Kernel is LTO
 LTO=0
 
+# Clean source before building. 1 is NO(default) | 0 is YES
+INCREMENTAL=0
+
+TELEGRAM_CHATID=
+
+TOKEN=
+
+#####################################################
+
 # Specify linker.
 # 'ld.lld'(default)
 LINKER=ld.lld
 
-# Clean source prior building. 1 is NO(default) | 0 is YES
-INCREMENTAL=0
 
-TELEGRAM_CHATID=1770565427
+## clone Kernel
+echo "Cloning Kernel"
+git clone $KERN_SOURCE -b $KERN_BRANCH kernel
 
-TOKEN=$TELEGRAM_TOKEN
+# The defult directory where the kernel should be placed
+KERNEL_DIR=$(pwd)/kernel
+cd $KERNEL_DIR
+
 
 # Push ZIP to Telegram. 1 is YES | 0 is NO(default)
 PTTG=1
@@ -178,7 +183,7 @@ DATE=$(TZ=Asia/HoChiMinh date +"%Y-%m-%d")
 		AK_DIR=$KERNEL_DIR/Anykernel3
 
 	    msg "|| Cloning Anykernel ||"
-        git clone https://github.com/ping2109/AnyKernel3.git -b lavender $KERNEL_DIR/Anykernel3
+        git clone https://github.com/ping2109/AnyKernel3.git -b main $KERNEL_DIR/Anykernel3
 
 	if [ $BUILD_DTBO = 1 ]
 	then
@@ -349,6 +354,7 @@ build_kernel() {
 
 	msg "|| Started Compilation ||"
 	sed -i 's/CONFIG_LOCALVERSION=/# CONFIG_LOCALVERSION=/g' arch/arm64/configs/$DEFCONFIG
+	sed -i 's/# CONFIG_EXYNOS_DOZE is not set/CONFIG_EXYNOS_DOZE=y/g' arch/arm64/configs/$DEFCONFIG
 	export LOCALVERSION=$LOCAL_VER
 	export DEFAULT_USERNAME="ping2109"
 	export DEFAULT_HOSTNAME="pings-freefire-gamingpc"
